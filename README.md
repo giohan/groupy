@@ -20,7 +20,7 @@ on multiple nodes
 Groupy can manage clusters from a single machine (i.e. just your laptop) with no dependancies on Follower nodes.
 You don't even need to install groupy on multiple nodes.
 
-The only dependancies are * *paramiko* * and * *scp* *on the Leader node and ssh access to the Follower nodes.
+The only dependancies are  *paramiko*  and  *scp* on the Leader node and ssh access to the Follower nodes.
 ```
 sudo pip install paramiko
 sudo pip install scp
