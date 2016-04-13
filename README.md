@@ -4,16 +4,16 @@ Groupy is a really simple tool to help you with multinode orchestration.
 
 # Features
 
-Groupy can be used in order to:
-- Run single commands
-- Run scripts
-- Copy files
+Groupy can be used in order to:\n
+- Run single commands\n
+- Run scripts\n
+- Copy files\n
 on multiple nodes
 
 ## Concepts
-**Leader**: Is the machine which is used to run groupy.
-**Followers**: Are the nodes we are sending the commands to.
-**Groups**: We can send commands to groups of Followers(nodes) using the **hosts** file
+**Leader**: Is the machine which is used to run groupy.\n
+**Followers**: Are the nodes we are sending the commands to.\n
+**Groups**: We can send commands to groups of Followers(nodes) using the **hosts** file\n
 
 # Dependancies
 
