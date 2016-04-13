@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+
+# (c) 2016, George Hantzaras <ghantzaras@gmail.com>
+#
+# This file is part of Groupy
+#
+# Groupy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Groupy is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Groupy.  If not, see <http://www.gnu.org/licenses/>.
+
+########################################################
+
+import argparse
+import sys
+import actions
+import getconf
+
+def get_args(args=None):
+    parser = argparse.ArgumentParser(description='Script to help you manage clusters easily')
+    parser.add_argument('-H', '--hosts',
+                        help='Follower Hosts',
+                        default='localhost')
+    parser.add_argument('-g', '--groups',
+                        help='Follower Groups',
+                        default='')
+    parser.add_argument('-u', '--user',
+                        help='Username',
+                        default='root')
+    parser.add_argument('-p', '--password',
+                        action='store_true',
+                        help='Is password required. Do not enter password here.')
+    parser.add_argument('-s', '--script',
+                        help='Script to run',
+                        default='')
+    parser.add_argument('-c', '--command',
+                        help='Shell command to run',
+                        default='')
+    parser.add_argument('-C', '--copy',
+                        help='File to copy',
+                        default='')
+    return parser.parse_args(args)
+
+
+if __name__ == '__main__':
+    args = get_args(sys.argv[1:])
+    arguments = vars(args)
+    conf = getconf.get(arguments)
+    actions.run(conf['script'],conf['command'],conf['copy'],conf['user'],conf['password'],conf['hosts'])
