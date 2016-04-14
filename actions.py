@@ -2,7 +2,11 @@ import sys
 import paramiko
 from scp import SCPClient
 
-def run_command(command, hosts, user ,password):
+username=''
+password=''
+hosts=''
+
+def run_command(command, hosts):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.load_system_host_keys()
@@ -10,7 +14,7 @@ def run_command(command, hosts, user ,password):
     for host in hosts:
         print('\nConnecting to host "%s"...' % (host))
         try:
-            client.connect(host, 22, user, password)
+            client.connect(host, 22, username, password)
         except paramiko.ssh_exception.AuthenticationException:
             print ('Failed to authenticate at host "%s"... Please check authentication method and username/password combination' % (host))
             continue
@@ -23,14 +27,14 @@ def run_command(command, hosts, user ,password):
         print "stdout: ", stdout.readlines()
         print 'Done %s' %(host)
 
-def copy_file(script, hosts, user ,password):
+def copy_file(script, hosts):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.load_system_host_keys()
     for host in hosts:
         print('\nCopying script "%s" to host "%s"...' % (script,host))
         try:
-            client.connect(host, 22, user, password)
+            client.connect(host, 22, username, password)
         except paramiko.ssh_exception.AuthenticationException:
             print ('Failed to authenticate at host "%s"... Please check authentication method and username/password combination' % (host))
             continue
@@ -45,17 +49,17 @@ def copy_file(script, hosts, user ,password):
         scp.close()
 
 
-def run_script(script, hosts, user ,password):
+def run_script(script, hosts):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.load_system_host_keys()
 
-    copy_file(script, hosts, user ,password)
+    copy_file(script, hosts)
 
     for host in hosts:
         print('\nConnecting to host "%s"...' % (host))
         try:
-            client.connect(host, 22, user, password)
+            client.connect(host, 22, username, password)
         except paramiko.ssh_exception.AuthenticationException:
             print ('Failed to authenticate at host "%s"... Please check authentication method and username/password combination' % (host))
             continue
@@ -67,15 +71,24 @@ def run_script(script, hosts, user ,password):
         print "stderr: ", stderr.readlines()
         print "stdout: ", stdout.readlines()
 
+def config(user, passwd, hostlist):
+    global username
+    global password
+    global hosts
+    username = user
+    password = passwd
+    hosts = hostlist
 
-def run(script,command,copy,user,password,hosts):
+def run(script,command,copy,user,passwd,hostlist):
+    config(user,passwd,hostlist)
+
     if script == '' and command == '' and copy == '':
         print 'Please enter valid command or script to run'
         sys.exit(0)
     else:
         if command != '':
-            run_command(command, hosts, user ,password)
+            run_command(command, hosts)
         if script != '':
-            run_script(script, hosts, user, password)
+            run_script(script, hosts)
         if copy != '':
-            copy_file(copy, hosts, user, password)
+            copy_file(copy, hosts)
