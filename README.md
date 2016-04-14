@@ -4,23 +4,23 @@ Groupy is a really simple tool to help you with multinode orchestration.
 
 # Features
 
-Groupy can be used in order to:
-- Run single commands
-- Run scripts
-- Copy files
+Groupy can be used in order to:  
+- Run single commands  
+- Run scripts  
+- Copy files  
 on multiple nodes
 
 ## Concepts
-**Leader**: Is the machine which is used to run groupy.
-**Followers**: Are the nodes we are sending the commands to.
-**Groups**: We can send commands to groups of Followers(nodes) using the **hosts** file
+**Leader**: Is the machine which is used to run groupy.  
+**Followers**: Are the nodes we are sending the commands to.  
+**Groups**: We can send commands to groups of Followers(nodes) using the **hosts** file  
 
 # Dependancies
 
 Groupy can manage clusters from a single machine (i.e. just your laptop) with no dependancies on Follower nodes.
 You don't even need to install groupy on multiple nodes.
 
-The only dependancies are * *paramiko* * and * *scp* *on the Leader node and ssh access to the Follower nodes.
+The only dependancies are  *paramiko*  and  *scp* on the Leader node and ssh access to the Follower nodes.
 ```
 sudo pip install paramiko
 sudo pip install scp
@@ -48,7 +48,5 @@ optional arguments:
 - If you use the **password** flag, you will be promted to enter the password, in order to not expose it in plain text.
 - You can use multiple operations(script,command,copy) in a single run.
 - Multiple commands can be run in the format:
-```
--c 'command-1; command-2'
-```
+> -c 'command-1; command-2'
 - When running a script, it is copied in the home directory in all nodes and after running it is removed.
