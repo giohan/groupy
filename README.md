@@ -49,5 +49,7 @@ optional arguments:
 - If you use the **password** flag, you will be promted to enter the password, in order to not expose it in plain text.
 - You can use multiple operations(script,command,copy) in a single run.
 - Multiple commands can be run in the format:
-> -c 'command-1; command-2'
+```
+-c 'command-1; command-2'
+```
 - When running a script, it is copied in the home directory in all nodes and after running it is removed.
