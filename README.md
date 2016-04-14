@@ -42,6 +42,7 @@ optional arguments:
   -s SCRIPT, --script SCRIPT    Script to run
   -c COMMAND, --command COMMAND Shell command to run
   -C COPY, --copy COPY          File to copy
+  -v, --verbose                 Verbose
 ```
 - Only one between **hosts** and **groups** options can be used at each time.
 - Both **hosts** and **groups** accept a comma separated list as input. The **all** keyword can be used for groups, in order to run the command for all hosts in all groups.
