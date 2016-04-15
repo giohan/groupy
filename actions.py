@@ -65,7 +65,7 @@ def run_script(script, hosts):
             print ('Cannot connet to %s. Not a valid host.\n' % (host))
             continue
         print ('Running script "%s" at "%s"' % (script,host) if verbose else 'Host: %s'%(host))
-        stdin, stdout, stderr = client.exec_command('chmod +x %s; ./%s; rm -f %s' %(script,script,script))
+        stdin, stdout, stderr = client.exec_command('chmod +x %s; sh %s; rm -f %s' %(script,script,script))
         print "stderr: ", stderr.readlines()
         print "stdout: ", stdout.readlines(), '\n'
 
