@@ -57,7 +57,8 @@ optional arguments:
 ## Hosts
 The hosts files is an ini style file and you can add Followers using IPs or valid domain names.
 
-**Interpolation**
+**Interpolation**  
+
 Group interpolation can be done in the following way:
 ```
 [slaves]
