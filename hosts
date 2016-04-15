@@ -1,8 +1,12 @@
-[Group-1]
-127.0.0.1
-foo.bar.com
-bar.foo.com
+[slaves]
+slave01.sample.com
+slave02.sample.com
+slave03.sample.com
 
-[Group-2]
-0.0.0.1
-localhost
+[master]
+master1.sample.com
+master2.sample.com
+
+[test]
+test.sample.com
+$master

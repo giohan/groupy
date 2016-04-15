@@ -15,6 +15,9 @@ def get_groups(sections):
 
     for section in sections:
         for key in Config.items(section):
+            if key[0][0] == '$':
+                sections.append(key[0][1:])
+                continue
             if key[0] not in hosts:
                 hosts.append(key[0])
 

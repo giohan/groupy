@@ -53,3 +53,24 @@ optional arguments:
 -c 'command-1; command-2'
 ```
 - When running a script, it is copied in the home directory in all nodes and after running it is removed.
+
+## Hosts
+The hosts files is an ini style file and you can add Followers using IPs or valid domain names.
+
+**Interpolation**
+Group interpolation can be done in the following way:
+```
+[slaves]
+slave01.sample.com
+slave02.sample.com
+slave03.sample.com
+
+[master]
+master1.sample.com
+master2.sample.com
+
+[test]
+test.sample.com
+$master
+```
+With the above configuration, the *test* group will contain 3 nodes.
