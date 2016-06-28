@@ -6,7 +6,7 @@ import ConfigParser
 def get_groups(sections):
     Config = ConfigParser.ConfigParser(allow_no_value=True)
 
-    Config.read('hosts')
+    Config.read('../conf/hosts')
     hosts = []
     if sections == 'all':
         sections = Config.sections()

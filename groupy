@@ -21,8 +21,8 @@
 
 import argparse
 import sys
-import actions
-import getconf
+import lib.actions as actions
+import lib.getconf as getconf
 
 def get_args(args=None):
     parser = argparse.ArgumentParser(description='Script to help you manage clusters easily')

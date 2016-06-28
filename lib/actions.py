@@ -24,8 +24,8 @@ def run_command(command, hosts):
             continue
         print ('Running "%s" at "%s"' % (command,host) if verbose else 'Host: %s'%(host))
         stdin, stdout, stderr = client.exec_command(command)
-        print "stderr: ", stderr.readlines()
-        print "stdout: ", stdout.readlines(),'\n'
+        print "stderr:", '\t'.join(stderr.readlines())
+        print "stdout:", '\t'.join(stdout.readlines()),'\n'
 
 def copy_file(script, hosts):
     client = paramiko.SSHClient()
